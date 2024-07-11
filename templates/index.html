@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CUSTOMER CHURN PREDICTION</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{url_for('static', filename ='img/fav2.png')}}" rel="icon">
+  <link href="{{url_for('static', filename ='img/fav2.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{url_for('static', filename ='vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename ='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="#hero">SOMTELCHURN<span>.</span></a></h1>
+      <!-- <a href="index.html" class="logo me-auto"><img src="{{url_for('static', filename ='img/fav2.png')}}" alt=""></a> -->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#visualization">Visualization</a></li>
+          <li><a class="nav-link scrollto" href="#project">Project</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          {% if 'username' in session %}
+          <li class="">
+            <a class="nav-link text-primary fw-bold" href="#">Welcome, {{ session['username'][0:15] }}..!</a>
+          </li>
+          <li class="">
+            <a class="nav-link text-danger fw-bold" href="{{ url_for('logout') }}"></i>
+              Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-primary scrollto fw-bold" href="{{ url_for('login') }}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <!-- <a href="#about" class="get-started-btn scrollto">Get Started</a> -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <div class="row">
+        <div class="col-xl-6">
+          <h1>Customer churn prediction based on telecommunication Somalia</h1>
+          <h2>The telecommunication companies in Mogadishu Somalia has challenges about
+            keeping and the loyalty of their customers to predict either leaving or not.</h2>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="row no-gutters">
+      <div class="content col-lg-5 col-md-6 d-flex align-items-stretch">
+        <div class="content">
+          <h3>A Machine Learning Approach to Predicting Customer Churn</h3>
+          <p>
+            The Telecommunication Customer Churn Prediction System forecasts customer departure likelihoods for
+            service providers. It aggregates and processes data from diverse sources, including customer
+            interactions, usage patterns, and billing details. After refining the data, machine learning techniques
+            are applied to identify key churn factors like service satisfaction and interaction quality. Techniques
+            such as Logistic Regression and Random Forest are utilized to develop predictive models. The
+            best-performing model is then implemented for practical use. Overall, this system is essential for telecoms aiming to improve customer
+            retention and stay competitive.
+          </p>
+          <a href="#about" class="about-btn"><span>About us</span> <i class="bx bx-chevron-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-6 d-flex align-items-stretch">
+        <div class="icon-boxes d-flex flex-column justify-content-center">
+          <img src="{{url_for('static', filename ='img/Customer Churn image.webp')}}" class="img-fluid" alt="">
+        </div><!-- End .content-->
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ======= Visualization Section ======= -->
+    <section id="visualization" class="visualization section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Visualization</h2>
+          <p>Customer churn prediction visualization images.</p>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+              aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+              aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+              aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+              aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+              aria-label="Slide 8"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
+              aria-label="Slide 9"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9"
+              aria-label="Slide 10"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="10"
+              aria-label="Slide 11"></button>
+          </div>
+          <div class="carousel-inner visual-image">
+
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/Accuracy Comparison of Supervised ML Algorithms.png"
+                    class="d-block w-100" alt="...">
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/corelation of all predictors with Churn.png"
+                    class="d-block w-100" alt="...">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/logistic_regression_confusion_matrix.png" class="d-block w-100"
+                    alt="...">
+
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/random_forest_confusion_matrix.png" class="d-block w-100"
+                    alt="...">
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/Churn by Monthly Charges.png" class="d-block w-100" alt="...">
+
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/Churn by Total Charges.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/gender.png" class="d-block w-100" alt="...">
+
+
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/tenure_group.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/PhoneService.png" class="d-block w-100" alt="...">
+
+
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/Contract.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/PaymentMethod.png" class="d-block w-100" alt="...">
+
+
+                </div>
+                <div class="col-md-6">
+                  <img src="../static/img/visualization/Partner.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Project Section ======= -->
+    <section id="project" class="project">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Project</h2>
+          <p>Customer churn prediction based on telecommunication somalia.</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-12">
+            <form id="predictionForm" action="{{url_for('predict')}}" method="POST" role="form" class="project-form">
+              <div class="row">
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Senior Citizen</label>
+                  <select name="SeniorCitizen" class="form-control" id="SeniorCitizen" required>
+                    <option value="1" {% if SeniorCitizen==1 %}selected{% endif %}>1</option>
+                    <option value="0" {% if SeniorCitizen==0 %}selected{% endif %}>0</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Monthly Charges</label>
+                  <input type="text" name="MonthlyCharges" class="form-control" id="MonthlyCharges"
+                    value="{{MonthlyCharges}}" step="any" placeholder="Monthly Charges" required
+                    oninput="validateInput(this)">
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Total Charges</label>
+                  <input type="text" name="TotalCharges" class="form-control" id="TotalCharges" value="{{TotalCharges}}"
+                    step="any" placeholder="Total Charges" required oninput="validateInput(this)">
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Gender</label>
+                  <select name="Gender" class="form-control" id="Gender" required>
+                    <option value="Female" {% if Gender=='Female' %}selected{% endif %}>Female</option>
+                    <option value="Male" {% if Gender=='Male' %}selected{% endif %}>Male</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Partner</label>
+                  <select name="Partner" class="form-control" id="Partner" required>
+                    <option value="Yes" {% if Partner=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if Partner=='No' %}selected{% endif %}>No</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Dependents</label>
+                  <select name="Dependents" class="form-control" id="Dependents" required>
+                    <option value="Yes" {% if Dependents=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if Dependents=='No' %}selected{% endif %}>No</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Phone Service</label>
+                  <select name="PhoneService" class="form-control" id="PhoneService" required>
+                    <option value="Yes" {% if PhoneService=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if PhoneService=='No' %}selected{% endif %}>No</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Multiple Lines</label>
+                  <select name="MultipleLines" class="form-control" id="MultipleLines" required>
+                    <option value="Yes" {% if MultipleLines=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if MultipleLines=='No' %}selected{% endif %}>No</option>
+                    <option value="No phone service" {% if MultipleLines=='No phone service' %}selected{% endif %}>No
+                      phone service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Internet Service</label>
+                  <select name="InternetService" class="form-control" id="InternetService" required>
+                    <option value="DSL" {% if InternetService=='DSL' %}selected{% endif %}>DSL</option>
+                    <option value="Fiber optic" {% if InternetService=='Fiber optic' %}selected{% endif %}>Fiber optic
+                    </option>
+                    <option value="No" {% if InternetService=='No' %}selected{% endif %}>No</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Online Security</label>
+                  <select name="OnlineSecurity" class="form-control" id="OnlineSecurity" required>
+                    <option value="Yes" {% if OnlineSecurity=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if OnlineSecurity=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if OnlineSecurity=='No internet service' %}selected{% endif
+                      %}>No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Online Backup</label>
+                  <select name="OnlineBackup" class="form-control" id="OnlineBackup" required>
+                    <option value="Yes" {% if OnlineBackup=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if OnlineBackup=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if OnlineBackup=='No internet service' %}selected{% endif %}>
+                      No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Device Protection</label>
+                  <select name="DeviceProtection" class="form-control" id="DeviceProtection" required>
+                    <option value="Yes" {% if DeviceProtection=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if DeviceProtection=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if DeviceProtection=='No internet service' %}selected{% endif
+                      %}>No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Tech Support</label>
+                  <select name="TechSupport" class="form-control" id="TechSupport" required>
+                    <option value="Yes" {% if TechSupport=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if TechSupport=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if TechSupport=='No internet service' %}selected{% endif %}>
+                      No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Streaming TV</label>
+                  <select name="StreamingTV" class="form-control" id="StreamingTV" required>
+                    <option value="Yes" {% if StreamingTV=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if StreamingTV=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if StreamingTV=='No internet service' %}selected{% endif %}>
+                      No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Streaming Movies</label>
+                  <select name="StreamingMovies" class="form-control" id="StreamingMovies" required>
+                    <option value="Yes" {% if StreamingMovies=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if StreamingMovies=='No' %}selected{% endif %}>No</option>
+                    <option value="No internet service" {% if StreamingMovies=='No internet service' %}selected{% endif
+                      %}>No internet service</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Contract</label>
+                  <select name="Contract" class="form-control" id="Contract" required>
+                    <option value="Month-to-month" {% if Contract=='Month-to-month' %}selected{% endif %}>Month-to-month
+                    </option>
+                    <option value="One year" {% if Contract=='One year' %}selected{% endif %}>One year</option>
+                    <option value="Two year" {% if Contract=='Two year' %}selected{% endif %}>Two year</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Paperless Billing</label>
+                  <select name="PaperlessBilling" class="form-control" id="PaperlessBilling" required>
+                    <option value="Yes" {% if PaperlessBilling=='Yes' %}selected{% endif %}>Yes</option>
+                    <option value="No" {% if PaperlessBilling=='No' %}selected{% endif %}>No</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Payment Method</label>
+                  <select name="PaymentMethod" class="form-control" id="PaymentMethod" required>
+                    <option value="Electronic check" {% if PaymentMethod=='Electronic check' %}selected{% endif %}>
+                      Electronic check</option>
+                    <option value="Mailed check" {% if PaymentMethod=='Mailed check' %}selected{% endif %}>Mailed check
+                    </option>
+                    <option value="Credit card (automatic)" {% if PaymentMethod=='Credit card (automatic)' %}selected{%
+                      endif %}>Credit card (automatic)</option>
+                    <option value="Bank transfer (automatic)" {% if PaymentMethod=='Bank transfer (automatic)'
+                      %}selected{% endif %}>Bank transfer (automatic)</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                  <label for="" class="form-label mb-2">Number of Months</label>
+                  <input type="text" name="tenure" class="form-control" id="tenure" value="{{tenure}}"
+                    placeholder="Number of Month" required oninput="validateUserInput(this)">
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="text-start"><button type="submit">Predict</button></div>
+              </div>
+
+              <div class="alert alert-primary mt-3" id="outputDisplay" role="alert" style="display: none;">
+                <div id="loadingSpinner" style="display: none;">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+                <span id="outputMessage">{{output1}}</span>
+              </div>
+              <!-- <div class="alert alert-primary" role="alert">
+                {{output2}}
+              </div> -->
+            </form>
+
+          </div>
+
+    </section>
+    <!-- End Project Section -->
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Team developed project.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src=" {{url_for('static', filename ='img/team/team-11.jpeg')}} " class="img-fluid" alt="">
+                <div class="social">
+                  <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL"><i class="bi bi-twitter"></i></a>
+                  <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Zakaria Ali Hassan</h4>
+                <span>Team Leader</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src=" {{url_for('static', filename ='img/team/team-2.jpeg')}} " class="img-fluid" alt="">
+                <div class="social">
+                  <a href="https://www.facebook.com/profile.php?id=100005002216160&mibextid=ZbWKwL"><i
+                      class="bi bi-twitter"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=100005002216160&mibextid=ZbWKwL"><i
+                      class="bi bi-facebook"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=100005002216160&mibextid=ZbWKwL"><i
+                      class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Adan Saleban Ali</h4>
+                <span>Member</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src=" {{url_for('static', filename ='img/team/team-3.jpg')}} " class="img-fluid" alt="">
+                <div class="social">
+                  <a href="https://www.facebook.com/capital.yare?mibextid=ZbWKwL"><i class="bi bi-twitter"></i></a>
+                  <a href="https://www.facebook.com/capital.yare?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.facebook.com/capital.yare?mibextid=ZbWKwL"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Abshir Muse Ahmed</h4>
+                <span>Member</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src=" {{url_for('static', filename ='img/team/team-4.jpeg')}} " class="img-fluid" alt="">
+                <div class="social">
+                  <a href="https://www.facebook.com/cabdijabaarqayliye.kaapecaraysane.7?mibextid=ZbWKwL"><i
+                      class="bi bi-twitter"></i></a>
+                  <a href="https://www.facebook.com/cabdijabaarqayliye.kaapecaraysane.7?mibextid=ZbWKwL"><i
+                      class="bi bi-facebook"></i></a>
+                  <a href="https://www.facebook.com/cabdijabaarqayliye.kaapecaraysane.7?mibextid=ZbWKwL"><i
+                      class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Abdijabar Jama' Mohamed</h4>
+                <span>Member</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row justify-content-between d-flex">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>SOMTELCHURN<span>.</span></h3>
+            <p>
+              KM4 Street <br>
+              Hodan, Mogadishu<br>
+              Somalia <br><br>
+              <strong>Phone:</strong> +252 619222352<br>
+              <strong>Email:</strong> somtelchurn@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links ">
+            <h4>Useful Links</h4>
+            <ul class="">
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#project">Project</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+
+        <div class="credits">Developed by <a href="#hero">GROUP 20</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-end pt-3 pt-md-No">
+        <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL" class="instagram"><i class="bx bxl-instagram"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename ='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename ='vendor/php-email-form/validate.js') }}"></script>
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename ='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename ='js/valid.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+  <script>
+    $(document).ready(function () {
+      $('#predictionForm').on('submit', function (e) {
+        e.preventDefault();
+        $('#outputDisplay').show();
+        $('#outputMessage').hide();
+        $('#loadingSpinner').show();
+        $.ajax({
+          url: $(this).attr('action'),
+          type: 'POST',
+          data: $(this).serialize(),
+          success: function (response) {
+            setTimeout(function () {
+              $('#loadingSpinner').hide();
+              $('#outputMessage').text(response.message).show();
+            }, 2000);
+          },
+          error: function () {
+            setTimeout(function () {
+              $('#loadingSpinner').hide();
+              $('#outputMessage').text('Error processing your request').show();
+              $('#outputDisplay').show();
+            }, 1000);
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
