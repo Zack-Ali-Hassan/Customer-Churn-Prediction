@@ -162,8 +162,8 @@ def predict():
             'Contract', 'PaperlessBilling', 'PaymentMethod','tenure_group']])
     
         # Load model
-        # model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modeldt.sav", "rb"))
-        model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modellog.sav", "rb"))
+        model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modeldt.sav", "rb"))
+        # model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modellog.sav", "rb"))
         # model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modelrf.sav", "rb"))
         # model = pickle.load(open("../Project/Telco-Customer-Churn-Prediction/modelsvm.sav", "rb"))
 
