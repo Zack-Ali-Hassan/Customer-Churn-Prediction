@@ -557,12 +557,79 @@ section {
 }
 
 
+/* Base styles for statistics section */
+#statistics {
+  color: #fff;
+  font-size: 14px;
+  background: #111111; /* Dark background for the statistics section */
+}
 
+.statistics .counters span {
+  font-size: 48px; /* Large font size for emphasis */
+  display: block;
+  color: white;
+}
+
+.statistics .counters p {
+  padding: 0;
+  margin: 0 0 20px 0;
+  font-family: "Roboto", sans-serif; /* Roboto font for a clean and modern look */
+  font-size: 14px;
+}
+
+.statistics button[type=button] {
+  background: #e03a3c;
+  border: 0;
+  padding: 10px 32px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.statistics button[type=button]:hover {
+  background: #e35052;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  #statistics {
+    font-size: 12px; /* Smaller base font size for the whole section */
+    padding: 20px 10px; /* Add padding for better spacing on small screens */
+  }
+
+  .statistics .counters span {
+    font-size: 24px; /* Smaller font size for the counters to fit mobile screens */
+  }
+
+  .statistics .counters p {
+    font-size: 12px; /* Smaller font size for descriptive text */
+    margin: 0 0 10px 0; /* Less spacing between text and the numbers */
+  }
+}
 
 
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+
+.team-member {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.team-member img {
+  width: 14rem;
+  height: 14rem;
+  border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+.team-member h4, .team-member .h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.img-brand {
+  height: 2.75rem;
+}
+
 .team .member {
   margin-bottom: 20px;
   overflow: hidden;

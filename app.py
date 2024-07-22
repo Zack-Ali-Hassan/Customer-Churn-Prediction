@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, url_for, redirect, session, jsonify
 import re
+from flask import send_file
 import pandas as pd
 import pickle
-from connection import get_db, close_db, create_table
+from connection import *
 import sqlite3
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app.teardown_appcontext(close_db)
 @app.before_request
 def initialize():
     create_table()
+    
 # Load your data
 df_1 = pd.read_csv("../Project/Telco-Customer-Churn-Prediction/first_telc.csv")
 
@@ -30,7 +32,7 @@ def login():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users WHERE email = ? AND password = ?", (email, password))
         user = cursor.fetchone()
-
+        print()
         if user:
             session['username'] = user['name']
             session['email'] = user['email']
@@ -53,7 +55,7 @@ def signup():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
         user = cursor.fetchone()
-
+        
         if user:
             return render_template('register.html', error='Email already exists.', name=name, email=email, password=password)
 
@@ -170,14 +172,59 @@ def predict():
         single = model.predict(new_df__dummies.tail(1))
         
         if single==1:
-            result = "This customer is churned!!."
+             try:
+                 InsertPredictionsData(inputQuery4,inputQuery5,inputQuery6,inputQuery7,inputQuery8,inputQuery9,inputQuery10,inputQuery11,inputQuery12,inputQuery13,inputQuery14,inputQuery15,inputQuery16,inputQuery17,inputQuery18,inputQuery2,inputQuery3,inputQuery19, "Churn")
+                 result = "This customer is churned!!."
+                 return jsonify(message=result)
+             except Exception as e:
+                 return jsonify(message=str(e)), 500
+           
         else:
-            result = "This customer is not churn."
-        return jsonify(message=result)
+            try:
+                InsertPredictionsData(inputQuery4,inputQuery5,inputQuery6,inputQuery7,inputQuery8,inputQuery9,inputQuery10,inputQuery11,inputQuery12,inputQuery13,inputQuery14,inputQuery15,inputQuery16,inputQuery17,inputQuery18,inputQuery2,inputQuery3,inputQuery19, "Not churn")
+                result = "This customer is not churn."
+                return jsonify(message=result, data=data)
+            except Exception as e:
+                 return jsonify(message=str(e)), 500
+            
     elif request.method == 'GET':
         
         return render_template('index.html')
     return 'Bad Request!', 400
+
+
+@app.route('/api/statistics')
+def get_statistics():
+    data_table = SummarizePrediction("table")
+    data_churn = SummarizePrediction("churn")
+    data_not_churn = SummarizePrediction("not churn")
+
+    table_data = [dict(row) for row in data_table] if data_table else []
+
+    stats_data = {
+        'total_data': len(data_table) if data_table else 0,
+        'total_churn': len(data_churn) if data_churn else 0,
+        'total_not_churn': len(data_not_churn) if data_not_churn else 0
+    }
+
+    return jsonify({
+        'statistics': stats_data,
+        'tableData': table_data
+    })
+
+@app.route('/download-excel')
+def download_excel():
+    conn = get_db()  
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM predictions")
+    data = cursor.fetchall()
+    df = pd.DataFrame(data, columns=[column[0] for column in cursor.description])
+
+    excel_path = 'C:/Users/Zakar/Desktop/THESIS/Project/Telco-Customer-Churn-Prediction/predictions.xlsx'
+    df.to_excel(excel_path, index=False, engine='openpyxl')
+
+    return send_file(excel_path, as_attachment=True, download_name='Predictions.xlsx')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -187,7 +234,9 @@ def page_not_found(e):
 if __name__ == '__main__':
     with app.app_context():
         create_table()
+        create_predictinTable()    
     app.run(debug=True)
+
 
 
 

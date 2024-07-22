@@ -44,6 +44,10 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#visualization">Visualization</a></li>
           <li><a class="nav-link scrollto" href="#project">Project</a></li>
+          {% if 'username' in session %}
+          <li><a class="nav-link scrollto" href="#statistics">System Statistics</a></li>
+          {% else %}
+          {% endif %}
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           {% if 'username' in session %}
           <li class="">
@@ -418,7 +422,7 @@
                     <span class="visually-hidden">Loading...</span>
                   </div>
                 </div>
-                <span id="outputMessage">{{output1}}</span>
+                <span id="outputMessage"></span>
               </div>
               <!-- <div class="alert alert-primary" role="alert">
                 {{output2}}
@@ -431,8 +435,156 @@
     <!-- End Project Section -->
 
 
+
+     <!-- ======= System Statistics Section ======= -->
+     {% if 'username' in session %}
+     <section id="statistics" class="statistics">
+      <div class="container footer-top" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>System Statistics </h2>
+          <p>summarize system.</p>
+        </div>
+        <div class="row mt-1">
+          <div class="col-12">
+           
+            <div class="table-responsive">
+              <table class="table table-bordered" id="statistics_table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Ph.service</th>
+                        <th scope="col">I.service</th>
+                        <th scope="col">O.security</th>
+                        <th scope="col">O.backup</th>
+                        <th scope="col">S.tv</th>
+                        <th scope="col">S.movies</th>
+                        <th scope="col">Contract</th>
+                        <th scope="col">P.method</th>
+                        <th scope="col">M.charges</th>
+                        <th scope="col">T.charges</th>
+                        <th scope="col">Num.months</th>
+                        <th scope="col">P.type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            </div>
+            <div class="d-flex justify-content-between ">
+              <div class="text-start"><button type="button" onclick="downloadExcel()">Export</button></div>
+            </div>
+            </div>
+          </div>
+          <div class="mt-4 row counters">
+  
+            <div class="col-lg-4 col-6 text-center">
+              <span class="purecounter counter-total" data-purecounter-start="0" data-purecounter-duration="1"></span>
+              <p>Total Entries</p>
+          </div>
+          
+          <div class="col-lg-4 col-6 text-center">
+              <span class="purecounter counter-churn" data-purecounter-start="0" data-purecounter-duration="1"></span>
+              <p>Churn</p>
+          </div>
+          
+          <div class="col-lg-4 col-6 text-center">
+              <span class="purecounter counter-not-churn" data-purecounter-start="0" data-purecounter-duration="1"></span>
+              <p>Not Churn</p>
+          </div>
+          
+           
+  
+          </div>
+         
+      
+      
+      </div>
+
+    </section>
+    {% else %}
+        
+      
+    {% endif %}
+    <!-- End System Statistics Section -->
+
+
+
+
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+
+    <section class="page-section bg-light" id="team">
+      <div class="container">
+        <div class="section-title">
+          <h2>OUR AMAZING TEAM</h2>
+          <p>Team developed project.</p>
+        </div>
+          <div class="row">
+              <div class="col-lg-3">
+                  <div class="team-member">
+                      <img class="mx-auto rounded-circle"  src=" {{url_for('static', filename ='img/team/Zack.png')}} " alt="..." />
+                      <h4 style="font-weight: bold;">Zakaria Ali Hassan</h4>
+                      <p class="text-muted">Team leader</p>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/zaki.yare0?mibextid=ZbWKwL" aria-label="Zakaria Ali Facebook Profile"><i
+                        class="bi bi-facebook"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://x.com/ZyZaki4?s=09" aria-label="Zakaria Ali Twitter Profile"><i
+                        class="bi bi-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/zyzack_ali?igsh=bDB2aDR4dHcyM2E3" aria-label="Zakaria Ali Instagram Profile"><i
+                        class="bi bi-instagram"></i></a>
+                      
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="team-member">
+                      <img class="mx-auto rounded-circle"  src=" {{url_for('static', filename ='img/team/team-2.jpeg')}} " alt="..." />
+                      <h4 style="font-weight: bold;">Adan Saleban Ali</h4>
+                      <p class="text-muted">Member</p>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/profile.php?id=100005002216160&mibextid=ZbWKwL" aria-label="Adan Saleban Ali Facebook Profile"><i
+                        class="bi bi-facebook"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://x.com/adansaleban1" aria-label="Adan Saleban Ali Twitter Profile"><i
+                        class="bi bi-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/haldorka_11" aria-label="Adan Saleban Ali Instagram Profile"><i
+                        class="bi bi-instagram"></i></a>
+                      
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="team-member">
+                      <img class="mx-auto rounded-circle"  src=" {{url_for('static', filename ='img/team/abshir.jpg')}} " alt="..." />
+                      <h4 style="font-weight: bold;">Abshir Muse Ahmed</h4>
+                      <p class="text-muted">Member</p>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/capital.yare?mibextid=ZbWKwL" aria-label="Abshir Muse Ahmed Facebook Profile"><i
+                        class="bi bi-facebook"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/capital.yare?mibextid=ZbWKwL" aria-label="Abshir Muse Ahmed Twitter Profile"><i
+                        class="bi bi-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/abshirmuuse9768?igsh=OHB0MXFlOTJrdm53" aria-label="Abshir Muse Ahmed Instagram Profile"><i
+                        class="bi bi-instagram"></i></a>
+                      
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="team-member">
+                      <img class="mx-auto rounded-circle"  src=" {{url_for('static', filename ='img/team/kaape.png')}} " alt="..." />
+                      <h4 style="font-weight: bold;">Abdijabar Jama'</h4>
+                      <p class="text-muted">Member</p>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/cabdijabaarqayliye.kaapecaraysane.7?mibextid=ZbWKwL" aria-label="Abdijabar Jama' Facebook Profile"><i
+                        class="bi bi-facebook"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://x.com/Kaapecarayzane" aria-label="Abdijabar Jama' Twitter Profile"><i
+                        class="bi bi-twitter"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/kaape_arayzane/" aria-label="Abdijabar Jama' Instagram Profile"><i
+                        class="bi bi-instagram"></i></a>
+                      
+                  </div>
+              </div>
+            
+          </div>
+        
+      </div>
+  </section>
+
+    <!-- <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -517,9 +669,10 @@
           </div>
 
         </div>
-
+      
       </div>
-    </section><!-- End Team Section -->
+    </section> -->
+    <!-- End Team Section -->
 
 
 
@@ -550,6 +703,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#visualization">Visualization</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#project">Project</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#statistics">System Statistics</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
             </ul>
           </div>
@@ -594,9 +748,12 @@
 
 
 
-  <script>
-    $(document).ready(function () {
-      $('#predictionForm').on('submit', function (e) {
+
+<script>
+  $(document).ready(function() {
+   setInterval( getStatistics, 5000);
+    $('#predictionForm').on('submit', function (e) {
+
         e.preventDefault();
         $('#outputDisplay').show();
         $('#outputMessage').hide();
@@ -606,9 +763,11 @@
           type: 'POST',
           data: $(this).serialize(),
           success: function (response) {
+            $('#outputMessage').text(response.data);
             setTimeout(function () {
               $('#loadingSpinner').hide();
               $('#outputMessage').text(response.message).show();
+              getStatistics()
             }, 2000);
           },
           error: function () {
@@ -620,10 +779,60 @@
           }
         });
       });
-    });
+      function getStatistics(){
+        
+      $.ajax({
+          url: '/api/statistics',
+          type: 'GET',
+          success: function(response) {
+            console.log(response); // See what data is actually being returned
+    $('.counter-total').attr('data-purecounter-end', response.statistics.total_data || 0);
+    $('.counter-churn').attr('data-purecounter-end', response.statistics.total_churn || 0);
+    $('.counter-not-churn').attr('data-purecounter-end', response.statistics.total_not_churn || 0)
+
+  // Update table
+  if (response.tableData && response.tableData.length > 0) {
+                var tableRows = response.tableData.map(function(row) {
+                    return `<tr>
+                        <td>${row.id}</td>
+                        <td>${row.gender}</td>
+                        <td>${row.phone_service}</td>
+                        <td>${row.internet_service}</td>
+                        <td>${row.online_security}</td>
+                        <td>${row.online_backup}</td>
+                        <td>${row.streaming_tv}</td>
+                        <td>${row.streaming_movies}</td>
+                        <td>${row.contract}</td>
+                        <td>${row.payment_method}</td>
+                        <td>${row.monthly_charges}</td>
+                        <td>${row.total_charges}</td>
+                        <td>${row.number_of_months}</td>
+                        <td>${row.predictedType}</td>
+                    </tr>`;
+                }).join('');
+                $('#statistics_table tbody').html(tableRows);
+            } else {
+                $('#statistics_table tbody').html('<tr><td colspan="4">No data available</td></tr>');
+            }
+
+              new PureCounter();
+          },
+          error: function() {
+               console.error('Failed to fetch statistics');
+               $('#statistics_table tbody').html('<tr><td colspan="4">Error loading data</td></tr>');
+          }
+      });
+      }
+
+
+      
+  });
+  function downloadExcel() {
+        window.location.href = '/download-excel';
+    }
   </script>
 
-
+    
 </body>
 
 </html>
